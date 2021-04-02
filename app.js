@@ -36,6 +36,8 @@ mongoose.connect(uri,
     
 
 
+
+//error handling
 app.use((req,res,next)=>{
     const error=new Error("404 resource not found");
     error.status=404;
