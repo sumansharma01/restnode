@@ -6,6 +6,18 @@ const app=express();
 const productsRoute=require('./routes/products');
 const ordersRoute=require('./routes/orders');
 
+
+//bodyparser for post requests
+const bodyParser=require('body-parser');
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+
+
+//using cors
+const cors=require('cors');
+app.use(cors());
+
+
 app.use('/products',productsRoute);
 app.use('/orders',ordersRoute);
 
