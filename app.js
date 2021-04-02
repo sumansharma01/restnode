@@ -21,6 +21,20 @@ app.use(cors());
 app.use('/products',productsRoute);
 app.use('/orders',ordersRoute);
 
+
+//database connection
+const mongoose=require('mongoose');
+const uri=`mongodb+srv://suman:hiraeth@cluster0.6ijog.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+mongoose.connect(uri,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
+    .then(()=>console.log("database connected!"))
+    .catch((err)=>"database connection error!");
+    
+
+
 app.use((req,res,next)=>{
     const error=new Error("404 resource not found");
     error.status=404;
