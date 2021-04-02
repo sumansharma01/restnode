@@ -23,8 +23,9 @@ app.use('/orders',ordersRoute);
 
 
 //database connection
+require('dotenv').config();
 const mongoose=require('mongoose');
-const uri=`mongodb+srv://suman:hiraeth@cluster0.6ijog.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const uri=`mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0.6ijog.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 mongoose.connect(uri,
     {
         useNewUrlParser: true,
