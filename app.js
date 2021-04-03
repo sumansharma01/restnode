@@ -5,6 +5,7 @@ const app=express();
 //acquiring routes
 const productsRoute=require('./routes/products');
 const ordersRoute=require('./routes/orders');
+const usersRoute=require('./routes/users');
 
 
 //bodyparser for post requests
@@ -20,6 +21,7 @@ app.use(cors());
 
 app.use('/products',productsRoute);
 app.use('/orders',ordersRoute);
+app.use('/users',usersRoute);
 
 
 //database connection
@@ -30,6 +32,8 @@ mongoose.connect(uri,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        useCreateIndex:true,
+        useFindAndModify:false
     })
     .then(()=>console.log("database connected!"))
     .catch((err)=>"database connection error!");
